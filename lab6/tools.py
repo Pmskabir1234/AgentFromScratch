@@ -1,5 +1,12 @@
 import requests
 
+ARTICLES = {
+    "python gil": [
+        "The Global Interpreter Lock historically prevents multiple Python threads from executing Python bytecode simultaneously in CPython.",
+        "The GIL has implications for CPU-bound multithreaded programs.",
+        "Multiprocessing can provide parallelism by using separate processes."
+    ]
+}
 
 def calculator(expression: str) -> str:
     """calcualate mathematical exresssions"""
@@ -17,6 +24,15 @@ def get_population(city: str) -> str:
     )
     data = response.json()
     return f"{data['results'][0]['population']}"
+
+def search(query:str) -> str:
+    "search article for the given query"
+    query = query.lower()
+    res = ARTICLES.get(
+        'query',
+        ['result not found :(']
+    )
+    return "\n".join(res)
 
 
 tools_schemas = [
