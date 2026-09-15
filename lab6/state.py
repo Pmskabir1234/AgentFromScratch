@@ -6,7 +6,7 @@ class AgentState:
     """this is the runtime state of the agent"""
     # for current convo
     messages : list[dict[str,Any]] = field(default_factory=list)
-
+    
     # tools results returned during current task
     tool_results : list[dict[str, Any]] = field(default_factory=list)
 
@@ -43,7 +43,7 @@ class AgentState:
         self.messages.append({
             "role":"tool",
             "tool_call_id":tool_call_id,
-            "tool_name":tool_name,
+            # "tool_name":tool_name,
             "content":str(result)
         })
         self.tool_results.append({

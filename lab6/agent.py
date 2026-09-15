@@ -15,13 +15,17 @@ class Agent:
         self.state = AgentState()
         self.max_iterations = 5
         self.token = os.getenv('HF_TOKEN')
+        self.state.messages.append({
+                "role":"system",
+                "content":"you are helpful assistant named 'niggagent', developer is Saad Kabir"
+            })
 
     def _execute_tool(self, name, arguments: dict):
 
         tool_ = TOOLS.get(name, None)
         if tool_ is None:
             raise ValueError(f"Unknow tool: {name}")
-        
+    
         try:
             return tool_(**arguments)
         except Exception as e:
@@ -81,7 +85,6 @@ class Agent:
                 tool_result = self._execute_tool(name=func_name,arguments=args)
                 print(f"Tool result: {tool_result}")
                 self.state.add_tool_result(tool_call_id, func_name, tool_result)
-
             print("sending tool result back to llm!\n")
         return f"oops, before we get you final answer maximum iters reached!"
 

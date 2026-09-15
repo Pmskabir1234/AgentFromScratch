@@ -1,4 +1,6 @@
 import requests
+from memory import save_memory,load_memory,forget,remember,retrieve
+
 
 ARTICLES = {
     "python gil": [
@@ -29,7 +31,7 @@ def search(query:str) -> str:
     "search article for the given query"
     query = query.lower()
     res = ARTICLES.get(
-        'query',
+        query,
         ['result not found :(']
     )
     return "\n".join(res)
@@ -69,10 +71,29 @@ tools_schemas = [
             "required":["city"]
         }
     }
+    },
+    {
+        "type":"function",
+        "function":{
+            "name":"search",
+            "description":"search for articles asked in query",
+            "parameters":{
+                "type":"object",
+                "properties":{
+                    "query":{
+                        "type":"string",
+                        "description":"the article asked by user"
+                    }
+                },
+               "required":['query'] 
+            }
+        }
     }
+    
 ]
 
 TOOLS = {
     "calculator":calculator,
-    "get_population":get_population
+    "get_population":get_population,
+    "search":search,
 }

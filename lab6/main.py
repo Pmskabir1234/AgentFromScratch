@@ -4,7 +4,7 @@ nigga = Agent()
 
 print("---Niggagent activated---")
 while True:
-    user_ip = input("\n>>")
+    user_ip = input("\n>> ")
 
     if user_ip.lower() in {'exit','quit','gtfo'}:
         break
