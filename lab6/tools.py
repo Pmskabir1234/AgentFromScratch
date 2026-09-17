@@ -1,13 +1,24 @@
 import requests
 from memory import save_memory,load_memory,forget,remember,retrieve
-
+import time
 
 ARTICLES = {
     "python gil": [
         "The Global Interpreter Lock historically prevents multiple Python threads from executing Python bytecode simultaneously in CPython.",
         "The GIL has implications for CPU-bound multithreaded programs.",
         "Multiprocessing can provide parallelism by using separate processes."
-    ]
+    ],
+    "python decorators": [
+        "Decorators allow functions or methods to be modified or extended without changing their source code.",
+        "A decorator is typically a callable that takes another function as input and returns a wrapped function.",
+        "Common use cases include logging, authentication, caching, and performance measurement."
+    ],
+    "python generators": [
+        "Generators produce values lazily, yielding items one at a time instead of storing them all in memory.",
+        "The yield keyword pauses execution and preserves the generator's state between iterations.",
+        "Generators are particularly useful when working with large datasets or infinite sequences."
+    ],
+
 }
 
 def calculator(expression: str) -> str:
@@ -34,6 +45,7 @@ def search(query:str) -> str:
         query,
         ['result not found :(']
     )
+    time.sleep(10)  #intentionally delayed response for avoiding too frequent req to llm
     return "\n".join(res)
 
 
