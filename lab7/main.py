@@ -1,6 +1,5 @@
-from agent import Agent
+from agent import run_agent
 
-nigga = Agent()
 
 print("---Niggagent activated---")
 while True:
@@ -9,5 +8,9 @@ while True:
     if user_ip.lower() in {'exit','quit','gtfo'}:
         break
 
-    ans = nigga.run(user_ip)
-    print('\nniggagent>>',ans)
+    try:
+        ans = run_agent(user_ip)
+        print('\nniggagent>>',ans)
+    except Exception as e:
+        print(f'\nniggagent>> {e}')
+        

@@ -11,7 +11,7 @@ URL = "https://router.huggingface.co/v1/chat/completions"
 class Planner:
     def __init__(self, model = "Qwen/Qwen3.8-27B"):
         self.model = model
-        self.token = os.getenv("HF_TOKEN2")
+        self.token = os.getenv("HF_TOKENi")
 
     def create_plan(self, goal) -> dict:
 
@@ -55,7 +55,7 @@ Rules:
         )
         response.raise_for_status()
         data = response.json()
-        content =  data['choices'][0]['message']['content'] #['choices'][0]['message']['content']
+        content =  data['choices'][0]['message']['content']
         plan = json.loads(content)
         return plan
 

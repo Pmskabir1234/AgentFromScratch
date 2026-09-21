@@ -1,7 +1,6 @@
 from planner import Planner
 from state import AgentState
 from executor import Executor
-import time
 
 def run_agent(goal):
 
@@ -23,7 +22,6 @@ def run_agent(goal):
 
     print("-"*100, "\nExecution starting...\n")
     for task in state.plan:
-        time.sleep(60)
         task['status'] = "in_progress"
         state.current_task = task
 
@@ -36,7 +34,7 @@ def run_agent(goal):
 
         state.completed_task.append(task)
         task['status'] = "completed"
-    # return state
-    print(state.results)
+    return state.results[-1]
+    # print(state.results)
 
-run_agent("compare FastAPI and Django as backend framewroks and gimme a verdict")
+# run_agent("compare FastAPI and Django as backend framewroks and gimme a verdict")

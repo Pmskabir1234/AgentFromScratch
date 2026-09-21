@@ -10,7 +10,7 @@ URL = "https://router.huggingface.co/v1/chat/completions"
 class Executor:
     def __init__(self, model = "Qwen/Qwen3.8-27B"):
         self.model = model
-        self.token = os.getenv("HF_TOKEN2")
+        self.token = os.getenv("HF_TOKENi")
 
     def execute(self, task : dict, previous_results):
         HEADERS =  {
