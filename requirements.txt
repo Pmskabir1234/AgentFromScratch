@@ -5,3 +5,4 @@ langchain
 langchain-huggingface
 huggingface-hub
 python-dotenv
+rich

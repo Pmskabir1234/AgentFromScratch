@@ -1,7 +1,12 @@
 from agent import run_agent
+from rich.console import Console
+from rich.markdown import Markdown
+from rich.panel import Panel
+from rich.rule import Rule
 
+console = Console()
 
-print("---Niggagent activated---")
+console.print(Rule("[brown]ask Niggagent anything"))
 while True:
     user_ip = input("\n>> ")
 
@@ -10,7 +15,14 @@ while True:
 
     try:
         ans = run_agent(user_ip)
-        print('\nniggagent>>',ans)
+        console.print(
+            Panel(
+                Markdown(ans),
+                title="Niggagent",
+                border_style="cyan",
+                padding=(1,2)
+            )
+        )
     except Exception as e:
-        print(f'\nniggagent>> {e}')
+        console.print(Markdown(f'\nniggagent>> {e}'))
         
